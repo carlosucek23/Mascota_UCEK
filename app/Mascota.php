@@ -11,7 +11,7 @@ class Mascota extends Model
     protected $primaryKey='id_mascota';
 
     // espesificamos las relaciones
-    public $with=['especie'];
+    public $with=['especie','raza'];
 
     // Define si la llave primaria es o no un numero incrementable
      public $incrementing=true;
@@ -26,12 +26,17 @@ class Mascota extends Model
         'genero',
         'peso',
         'id_propietario',
-        'id_especie'
+        'id_especie',
+        'id_raza'
      ];
 
      public function especie()
      {
          return $this->belongsTo(Especie::class,'id_especie','id_especie');
+     }
+
+     public function raza(){
+         return $this->belongsTo(Raza::class,'id_raza','id_raza');
      }
 
 
