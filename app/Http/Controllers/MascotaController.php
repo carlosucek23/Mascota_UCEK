@@ -46,7 +46,7 @@ class MascotaController extends Controller
      */
     public function show($id)
     {
-        //
+        return $mascota=Mascota::find($id);
     }
 
     /**
