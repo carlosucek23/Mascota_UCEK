@@ -23,12 +23,12 @@ new Vue({
  
     agregarPropietario:function(){
  
-       if(this. nombre && this.primer_apellido && this.segundo_apellido){
+       if(this.nombre && this.primer_apellido && this.segundo_apellido){
        // Construimos un objeto de tipo para insertar en el array
-       var unPropietario={nombre:this.nombre,primer_apellido:this.primer_apellido,segundo_apellido:this.segundo_apellido};
+       var unPropietario={nombre:this.nombre,primer_apellido:this.primer_apellido,segundo_apellido:this.segundo_apellido}
  
        // Agrego un objeto 
-       this.propietario.push(unPropietario);
+       this.propietarios.push(unPropietario);
        this.limpiarHtml();
  
        //enviamos el foco al primer componente al html/nombre, se debe agregar a todas las interfaces
