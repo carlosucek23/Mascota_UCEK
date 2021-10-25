@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HOLA MUNDO</title>
+	<!-- CARGAR CLASE VUE -->
+	<script type="text/javascript" src="vue.js"></script>
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+</head>
+<body class="container">
+	<!-- INICIO DE VUE -->
+	<div id="miPagina">
+
+		<!-- IMPRIMIR TABLA DE DATOS -->
+		<br><br>
+		<div class="row">
+			<div class="col-md-4">
+				<input type="text" placeholder="Nombre" class="form-control" v-model="nombre" ref="nombre">
+			</div>
+
+			<div class="col-md-4">
+					<input type="text" placeholder="primer_apellido" class="form-control" v-model="primer_apellido" ref="primer_apellido">
+				</select>
+			</div>
+
+			<div class="col-md-4">
+				<input type="text" placeholder="segundo_apellido" class="form-control" v-model="segundo_apellido" v-on:keyup.enter="agregarPropietario()">
+			</div>
+		</div><hr>
+
+		<div class="row">
+			<div class="col-md-4">
+			<button class="btn btn-primary btn-block" @click="agregarPropietario() " v-if="editando==0">Agregar</button>
+
+			<button class="btn btn-warning" v-if="editando==1" @click="guardarEdicion()">Actualizar</button>
+		</div>
+		<div class="col-md-4">
+			<button class="btn btn-info" @click="cancelar()">Cancelar</button>
+		</div>
+		
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<input type="text" placeholder="Escriba el nombre o primer_apellido o segundo_apellido " v-model="buscar" class="form-control">
+			</div>
+		</div>
+		<br>
+		<table class="table table-borderd">
+			<thead>
+				<th>INDICE</th>
+				<th>NOMBRE</th>
+				<th>PRIMER_APELLIDO</th>
+				<th>SEGUNDO_APELLIDO</th>
+				<th>ACCIONES</th>
+			</thead>
+
+			<tbody>
+				<tr v-for="(prop,index) in filtroPropietario">
+					<td>{{index}}</td>
+					<td>{{prop.nombre}}</td>
+					<td>{{prop.primer_apellido}}</td>
+					<td>{{prop.segundo_apellido}}</td>
+					<td>
+						<button class="btn btn-primary btn-sm" @click="editarPropietario(index)">
+							Editar
+						</button>
+
+						<button class="btn btn-danger btn-sm" @click="eliminarPropietario(index)">
+							Eliminar
+						</button>
+						
+
+					</td>
+
+				</tr>
+			</tbody>
+			
+		</table>
+
+
+
+	</div>
+	<!-- FIN DE VUE -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="propietarios.js"></script>
+	<script type="text/javascript" src="sweetalert2.all.min.js"></script>
+
+</body>
+</html>
