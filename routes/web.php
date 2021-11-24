@@ -1,5 +1,6 @@
-<?php
 
+<?php
+use DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,47 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::apiResource('apiMascota','MascotaController');
+Route::apiResource('apiEspecie','EspecieController');
+Route::apiResource('apiPropietario','PropietarioController');
+Route::apiResource('apiRaza','RazaController');
+
+
+Route::get('prueba', function(){
+    //return base64_encode('HOLA');
+    return DB::select("SELECT * FROM usuarios");
 });
+
+Route::get('Desencriptar', function(){
+    return base64_decode('SE9MQQ==');
+});
+
+Route::post('validar','AccesoController@validar');
+
+
+Route::get('mascotas', function (){
+    return view('mascotas');
+});
+
+Route::get('propietarios', function (){
+    return view('propietarios');
+});
+
+Route::get('especie', function () {
+    return view('especie');
+});
+
+Route::get('/', function (){
+    return view('login');
+});
+
+
+Route::get('codificar', function (){
+    return base64_encode('jose');
+});
+
