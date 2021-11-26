@@ -63,8 +63,18 @@
         </button>
       </div>
       <div class="modal-body">
-       ....
        
+       <input type="text" class="form-control" placeholder="Escriba el nombre de mascota" v-model="nombre"><br>
+       <input type="number" class="form-control" placeholder="Escriba la edad" v-model="edad"><br>
+       <input type="number" class="form-control" placeholder="Escriba el peso" v-model="peso"><br>
+       
+       <select class="form-control" v-model="genero">
+           <option disabled ="">Elija un genero</option>
+           <option value="M">M</option>
+           <option value="H">H</option>
+       </select>
+      
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

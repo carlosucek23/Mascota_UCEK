@@ -5,6 +5,13 @@ new Vue({
 	data:{
 		prueba:'Esta es una prueba',
 		mascotas:[],
+
+		nombre:'',
+		edad:'',
+		peso:'',
+		genero:'',
+
+
 	},
 
 	//al crearse la pagina
@@ -25,6 +32,28 @@ new Vue({
 
 		mostarModal:function(){
 			$('#modalMascota').modal('show');
+		},
+
+
+		// se construye el json para enviar al controlador
+		guadarMascota:function(){
+			var mascota={nombre:this.nombre,edad:this.edad,peso:this.edad,genero:this.genero};
+
+
+			//se envia los datos en json al controlador
+			this.$http.post(apiMascota,mascota).then(function(json){
+				this.obtenerMascotas();
+				this.nombre='';
+				this.edad='';
+				this.peso='';
+				this.genero='';
+			}).catch(function(json){
+				console.log(json);
+			});
+
+
+			$('#modalMascota').modal('hide');
+			console.log(mascota);
 		}
 
 	}
