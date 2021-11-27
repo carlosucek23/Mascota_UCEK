@@ -15,7 +15,7 @@
                      <!--INICION DE LA TABLA-->
             <table class="table-bordered table-striped">
                 <thead>
-                    <th>CLAVE</th>
+                    <th hidden>CLAVE</th>
                     <th>NOMBRE</th>
                     <th>GENERO</th>
                     <th>PESO</th>
@@ -27,7 +27,7 @@
 
                 <tbody>
                     <tr v-for="mascota in mascotas">
-                        <td>@{{mascota.id_mascota}}</td>
+                        <td hidden>@{{mascota.id_mascota}}</td>
                         <td>@{{mascota.nombre}}</td>
                         <td>@{{mascota.genero}}</td>
                         <td>@{{mascota.peso}}</td>
@@ -39,7 +39,7 @@
                                 <i class="far fa-edit"></i>
                             </button>
 
-                            <button class="btn btn-sm">
+                            <button class="btn btn-sm" @click="eliminarMascota(mascota.id_mascota)">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>
@@ -78,7 +78,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-primary" @click="guardarMascota">Guardar</button>
       </div>
     </div>
   </div>

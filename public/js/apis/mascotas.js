@@ -54,7 +54,19 @@ new Vue({
 
 			$('#modalMascota').modal('hide');
 			console.log(mascota);
-		}
+		},
+
+		eliminarMascota:function(id) {
+			var confirm= confirm('Esta seguro de elimminar la mascota')
+
+			if (confirm){
+				this.$http.delete(apiMascota+'/'+ id).then(function(json){
+					this.obtenerMascotas();
+				}).catch(function(json){
+
+				});
+			}
+		},
 
 	}
 });

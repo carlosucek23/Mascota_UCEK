@@ -78,6 +78,14 @@ class MascotaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $mascota=Mascota::find($id);
+
+        $mascota->nombre=$request->get('nombre');
+        $mascota->edad=$request->get('edad');
+        $mascota->peso=$request->get('peso');
+        $mascota->genero=$request->get('genero');
+
+        $mascota->update();
     }
 
     /**
@@ -89,5 +97,11 @@ class MascotaController extends Controller
     public function destroy($id)
     {
         //
+
+        $mascota= Mascota::find($id);
+
+        $mascota->delete();
+
     }
+
 }
