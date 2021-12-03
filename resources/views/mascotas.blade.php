@@ -19,9 +19,7 @@
                     <th>NOMBRE</th>
                     <th>GENERO</th>
                     <th>PESO</th>
-                    <th>PROPIETARIO</th>
                     <th>ESPECIE</th>
-                    <th>RAZA</th>
                     <th>ACCIONES</th>
                 </thead>
 
@@ -31,11 +29,9 @@
                         <td>@{{mascota.nombre}}</td>
                         <td>@{{mascota.genero}}</td>
                         <td>@{{mascota.peso}}</td>
-                        <td>@{{mascota.id_propietario}}</td>
-                        <td>@{{mascota.id_especie}}</td>
-                        <td>@{{mascota.id_raza}}</td>
+                        <td>@{{mascota.id_especie.especie}}</td>
                         <td>
-                            <button class="btn btn-sm">
+                            <button class="btn btn-sm" @click="editandoMascota(mascota.id_mascota)">
                                 <i class="far fa-edit"></i>
                             </button>
 
@@ -57,7 +53,8 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Mascota</h5>
+        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==true">Agregar Mascota</h5>
+        <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==false">Editando Mascota</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -72,13 +69,18 @@
            <option disabled ="">Elija un genero</option>
            <option value="M">M</option>
            <option value="H">H</option>
+       </select><br>
+
+       <select class="form-control" v-model="id_especie">
+           <option v-for="especie in especies" v-bind:value="especie.id_especie"> @{{especie.especie}}</option>
        </select>
       
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" @click="guardarMascota">Guardar</button>
+        <button type="button" class="btn btn-primary" @click="guardarMascota" v-if="agregando==true">Guardar</button>
+         <button type="button" class="btn btn-primary" @click="actualizarMascota" v-if="agregando==false">Guardar</button>
       </div>
     </div>
   </div>
