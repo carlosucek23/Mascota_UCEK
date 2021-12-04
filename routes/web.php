@@ -1,6 +1,5 @@
 
 <?php
-use DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +20,7 @@ Route::apiResource('apiMascota','MascotaController');
 Route::apiResource('apiEspecie','EspecieController');
 Route::apiResource('apiPropietario','PropietarioController');
 Route::apiResource('apiRaza','RazaController');
+Route::apiResource('apiProducto','ProductoController');
 
 
 Route::get('prueba', function(){
@@ -45,6 +45,10 @@ Route::get('propietarios', function (){
 
 Route::get('especie', function () {
     return view('especie');
+});
+
+Route::get('ventas', function () {
+    return view('ventas');
 });
 
 Route::get('/', function (){

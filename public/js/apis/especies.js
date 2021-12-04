@@ -1,4 +1,3 @@
-
 function init() {
 var apiEspecie='http://localhost/Proyectomodel/public/apiEspecie';
 new Vue({
